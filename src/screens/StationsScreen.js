@@ -42,12 +42,14 @@ class StationsScreen extends Component {
   render() {
     return (
     <View style={styles.container}>
-      <Header title = "Stations"/>
-      <ListView
-        style={styles.stationsList}
-        dataSource={this.state.dataSource}
-        renderRow={this.renderRow}
-      />
+      <Header title = "Stations" navigation={this.props.navigation}/>
+      <View style={styles.content}>
+        <ListView
+          style={styles.stationsList}
+          dataSource={this.state.dataSource}
+          renderRow={this.renderRow}
+        />
+      </View>
     </View>
     );
   }

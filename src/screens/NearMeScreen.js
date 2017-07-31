@@ -18,7 +18,8 @@ class NearMeScreen extends Component {
   state = {  }
   render() {
     return (
-      <Header title = "Near me"/>
+      <Header title = "Near me" navigation={this.props.navigation}/>
+
     );
   }
 }

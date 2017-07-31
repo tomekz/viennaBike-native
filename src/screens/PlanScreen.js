@@ -19,7 +19,7 @@ class PlanScreen extends Component {
   state = {  }
   render() {
     return (
-      <Header title = "Plan"/>
+      <Header title = "Plan" navigation={this.props.navigation}/>
     );
   }
 }
