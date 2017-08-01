@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import styles  from '.././styles/styles'
+import styles  from './styles/Header'
 
 class Header extends Component {
 

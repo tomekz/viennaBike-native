@@ -1,20 +1,9 @@
 import React, { Component } from 'react';
-import { View, ListView, Text } from 'react-native'
+import { View } from 'react-native'
 import { Ionicons } from '@expo/vector-icons';
-import { Header } from '.././components'
-import styles from '.././styles/styles'
-
-const rows = [
-  {id: 0, text: 'Station 1'},
-  {id: 1, text: 'Station 2'},
-  {id: 2, text: 'Station 3'},
-  {id: 3, text: 'Station 4'},
-  {id: 4, text: 'Station 5'},
-]
-
-const rowHasChanged = (r1, r2) => r1.id !== r2.id
-
-const ds = new ListView.DataSource({rowHasChanged})
+import { Header,  StationsList, LoadingScreen } from '.././components'
+import { API_URL } from '.././config/config'
+import axios from 'axios'
 
 class StationsScreen extends Component {
   static navigationOptions = {
@@ -27,31 +16,48 @@ class StationsScreen extends Component {
       />
     ),
   };
-  state = {
-    dataSource: ds.cloneWithRows(rows)
+  constructor(){
+    super()
+    this.state = {
+      stations : [],
+      isLoading: true,
+      error: ''
+    }
   }
 
-  renderRow = (rowData) => {
-    return (
-      <Text style={styles.row}>
-        {rowData.text}
-      </Text>
-    )
+  componentDidMount(){
+    axios.get(API_URL)
+      .then(res => {
+        this.setState({
+          stations : res.data.network.stations || [],
+          isLoading : false,
+          error: ''
+        })
+      })
+      .catch( err => this.setState({error : err}))
   }
 
   render() {
+    if(this.state.isLoading){
+      return (
+       <LoadingScreen/>
+      );
+    }
+    else if (this.state.error) {
+      return (
+        <View>
+          <Text>{error.message}</Text>
+        </View>
+      );
+    }
+
     return (
-    <View style={styles.container}>
-      <Header title = "Stations" navigation={this.props.navigation}/>
-      <View style={styles.content}>
-        <ListView
-          style={styles.stationsList}
-          dataSource={this.state.dataSource}
-          renderRow={this.renderRow}
-        />
+      <View style={styles.container}>
+         <Header title = "Stations" navigation={this.props.navigation}/>
+        <StationsList stations={this.state.stations} />
       </View>
-    </View>
     );
+
   }
 }
 

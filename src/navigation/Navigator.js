@@ -6,21 +6,18 @@ import NearMeScreen from '.././screens/NearMeScreen'
 
 export default DrawerNavigator({
   Stations: {
-    path: '/',
     screen: StationsScreen
   },
   Plan: {
-    path: '/plan',
     screen: PlanScreen
   },
   NearMe: {
-    path: '/near',
     screen: NearMeScreen
   }
 },
 {
   initialRouteName: 'Stations',
   contentOptions: {
-    activeTintColor: '#e91e63',
+    activeTintColor: '#FF0000',
   },
 })
