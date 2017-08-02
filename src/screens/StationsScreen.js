@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { View } from 'react-native'
 import { Ionicons } from '@expo/vector-icons';
-import { Header,  StationsList, LoadingScreen } from '.././components'
+import { FloatingButton,  StationsList, LoadingScreen } from '.././components'
 import { API_URL } from '.././config/config'
 import axios from 'axios'
+import styles from '.././styles/styles'
 
 class StationsScreen extends Component {
   static navigationOptions = {
@@ -34,7 +35,7 @@ class StationsScreen extends Component {
           error: ''
         })
       })
-      .catch( err => this.setState({error : err}))
+      .catch( err => this.setState({ error : err }))
   }
 
   render() {
@@ -53,7 +54,6 @@ class StationsScreen extends Component {
 
     return (
       <View style={styles.container}>
-         <Header title = "Stations" navigation={this.props.navigation}/>
         <StationsList stations={this.state.stations} />
       </View>
     );

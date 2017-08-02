@@ -1,36 +1,28 @@
 import { StyleSheet } from 'react-native'
 
 const lightGrey = '#808080'
+const colorWhite = '#fff'
 
 export default styles = StyleSheet.create({
-  stationsListItem: {
-    borderRadius: 3,
-    borderWidth: 0.4,
-    borderColor: lightGrey,
-    marginTop: 10,
-    width: 170,
-    height: 125
+  card: {
+    width: 165,
+    height: 110
   },
-  stationsListItemTop: {
+  cardTop: {
     flexDirection: 'row',
-    margin: 10
+    margin: 6
   },
-  stationListItemAvatar: {
-    flex: 2,
-    alignItems: 'center',
-  },
-  stationListItemTopContent: {
+  cardTopContent: {
     marginLeft: 5,
     flex: 6,
     alignItems: 'flex-start',
   },
-  stationsListItemBottom: {
+  cardAvatar: {
+    flex: 2,
+    alignItems: 'center',
+  },
+  cardBottom: {
     alignItems: 'center',
     margin: 5
-  },
-  stationListItemInfo: {
-    fontSize: 12,
-    fontWeight: 'bold',
-    margin: 1
   }
 })

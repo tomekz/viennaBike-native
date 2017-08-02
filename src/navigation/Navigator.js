@@ -2,7 +2,7 @@ import React from 'react';
 import { DrawerNavigator } from 'react-navigation'
 import StationsScreen from '.././screens/StationsScreen'
 import PlanScreen from '.././screens/PlanScreen'
-import NearMeScreen from '.././screens/NearMeScreen'
+import AboutScreen from '.././screens/AboutScreen'
 
 export default DrawerNavigator({
   Stations: {
@@ -11,8 +11,8 @@ export default DrawerNavigator({
   Plan: {
     screen: PlanScreen
   },
-  NearMe: {
-    screen: NearMeScreen
+  AboutMe: {
+    screen: AboutScreen
   }
 },
 {

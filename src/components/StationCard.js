@@ -14,34 +14,33 @@ class StationCard extends Component {
   {
     const { station } = this.props
     return (
-
-      <TouchableOpacity onPress={this.onPressCard.bind(this)} style={styles.stationsListItem}>
-        <View style={styles.stationsListItemTop}>
-          <Avatar
-            containerStyle = {styles.stationListItemAvatar}
-            small
-            rounded
-            source={require('../img/citybike_logo.jpg')}
-            overlayContainerStyle={{backgroundColor: '#fff'}}
-          />
-          <View style={styles.stationListItemTopContent}>
-            <Text style={styles.stationListItemTopContentInfo}>
-              Station {station.extra.internal_id}
-            </Text>
-            <Text style={commonStyles.textLightGrey}>
-              {station.name}
-            </Text>
+        <TouchableOpacity onPress={this.onPressCard.bind(this)} style={styles.card}>
+          <View style={styles.cardTop}>
+            <Avatar
+              containerStyle = {styles.cardAvatar}
+              small
+              rounded
+              source={require('../img/citybike_logo.jpg')}
+              overlayContainerStyle={{backgroundColor: commonStyles.colorWhite}}
+            />
+            <View style={styles.cardTopContent}>
+              <Text style={styles.stationListItemTopContentInfo}>
+                Station {station.extra.internal_id}
+              </Text>
+              <Text style={commonStyles.textLightGrey}>
+                {station.name}
+              </Text>
+            </View>
           </View>
-        </View>
-        <View style={styles.stationsListItemBottom} >
-            <Text style={[styles.stationListItemInfo, station.free_bikes == 0 && commonStyles.textRed]} >
-              {station.free_bikes} bikes
-            </Text>
-            <Text style={styles.stationListItemInfo} >
-              {station.extra.slots} free slots
-            </Text>
-        </View>
-      </TouchableOpacity>
+          <View style={styles.cardBottom} >
+              <Text style={[commonStyles.textBold, station.free_bikes == 0 && commonStyles.textRed]} >
+                {station.free_bikes} bikes
+              </Text>
+              <Text style={commonStyles.textBold} >
+                {station.extra.slots} free slots
+              </Text>
+          </View>
+        </TouchableOpacity>
     )
   }
 }

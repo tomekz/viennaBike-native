@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Text, View, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import styles  from './styles/Header'
+import styles  from './styles/FloatingButton'
 
-class Header extends Component {
+class FloatingButton extends Component {
 
   onPressButton(){
     this.props.navigation.navigate('DrawerOpen')
@@ -11,17 +11,14 @@ class Header extends Component {
 
   render() {
     return (
-      <View style={styles.header}>
-        <TouchableOpacity onPress={this.onPressButton.bind(this)} style={styles.header}>
+        <TouchableOpacity onPress={this.onPressButton.bind(this)} style={styles.button}>
           <Ionicons
             name="md-menu"
             size={24}
           />
-          <Text style={styles.headerTitle}>{this.props.title}</Text>
         </TouchableOpacity>
-      </View>
     );
   }
 }
 
-export default Header;
+export default FloatingButton;

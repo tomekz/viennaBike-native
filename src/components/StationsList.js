@@ -12,11 +12,16 @@ const ds = new ListView.DataSource({rowHasChanged});
 class StationsList extends Component {
 
   render(){
+    const { stations } = this.props
     return (
       <ListView
         contentContainerStyle={styles.stationsList}
-        dataSource={ds.cloneWithRows(this.props.stations)}
-        renderRow={(data) => <StationCard station={data} />}
+        dataSource={ds.cloneWithRows(stations)}
+        renderRow={(data) =>
+          <View style={styles.stationCardContainer}>
+            <StationCard station={data} />
+          </View>
+        }
       />
     );
   }
