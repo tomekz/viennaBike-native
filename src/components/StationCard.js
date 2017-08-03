@@ -35,12 +35,17 @@ class StationCard extends Component {
             </View>
           </View>
           <View style={styles.cardBottom} >
-              <Text style={[commonStyles.textBold, station.free_bikes == 0 && commonStyles.textRed]} >
-                {station.free_bikes} bikes
+              <Text style={[ station.free_bikes == 0 && commonStyles.textRed]} >
+                 bikes {station.free_bikes}
               </Text>
-              <Text style={commonStyles.textBold} >
-                {station.extra.slots} free slots
+              <Text  >
+                 slots {station.extra.slots}
               </Text>
+               { station.distance &&
+                <Text style={commonStyles.textBold} >
+                  {station.distance} km
+                </Text>
+              }
           </View>
         </TouchableOpacity>
     )

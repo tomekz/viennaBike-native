@@ -38,7 +38,8 @@ class Plan extends Component {
   }
 
   onLayout(){
-    const marker = this.refs[this.state.selectedStation.id]
+    const markerRef = this.state.selectedStation && this.state.selectedStation.id
+    const marker = this.refs[markerRef]
     marker && marker.showCallout();
   }
 

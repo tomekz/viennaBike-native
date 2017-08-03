@@ -10,6 +10,7 @@ export default styles = StyleSheet.create({
     margin: 5,
   },
   stationsList: {
+    marginTop: 20,
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
