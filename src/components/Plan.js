@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import { MapView } from 'expo';
 import StationCard from './StationCard';
-import Marker from './Marker';
 import styles from './styles/Plan'
 
 const LATITUDE_DELTA = 0.00922*1.5
@@ -13,7 +12,8 @@ class Plan extends Component {
   constructor(){
     super()
     this.state = {
-      mapRegion: null
+      mapRegion: null,
+      selectedStation: null,
     }
   }
 
@@ -27,24 +27,26 @@ class Plan extends Component {
       longitudeDelta: LONGITUDE_DELTA
     }
 
-    this.onRegionChange(region);
+    this.onRegionChange(region, selectedStation);
   }
 
-  onPressCard(station){
-    console.log('card pressed on PlanScreen ')
-  }
-
-  onRegionChange(region) {
+  onRegionChange(region, selectedStation) {
     this.setState({
-      mapRegion: region
+      mapRegion: region,
+      selectedStation: selectedStation
     });
+  }
+
+  onLayout(){
+    const marker = this.refs[this.state.selectedStation.id]
+    marker && marker.showCallout();
   }
 
   render() {
     const { stations } = this.props
     return (
       <MapView
-        ref={(ref) => { this.mapRef = ref }}
+      onLayout={this.onLayout.bind(this)}
         style={styles.map}
         region={this.state.mapRegion}
         provider={"google"}
@@ -54,7 +56,7 @@ class Plan extends Component {
         onRegionChange={this.onRegionChange.bind(this)}
         >
         {stations.map(station => (
-          <Marker
+          <MapView.Marker
             coordinate={{
               latitude: station.latitude,
               longitude: station.longitude,
@@ -62,12 +64,13 @@ class Plan extends Component {
             title={station.name}
             description={station.extra.description}
             key={station.id}
-            //calloutVisible = { station.extra.uid === selectedStation.uid }
+            station = { station }
+            ref={station.id}
             >
              <MapView.Callout>
-                <StationCard station={station} onPressCard={this.onPressCard.bind(this)} />
+                <StationCard station={station} />
             </MapView.Callout>
-          </Marker>
+          </MapView.Marker>
         ))}
       </MapView>
     );
