@@ -6,8 +6,6 @@ import styles from '.././styles/styles';
 import { API_URL } from '.././config/config'
 import axios from 'axios'
 
-const DEFAULT_SELECTED_STATION_ID = '111'
-
 class PlanScreen extends Component {
 
   static navigationOptions = {
@@ -25,7 +23,6 @@ class PlanScreen extends Component {
     super()
     this.state = {
       stations : [],
-      selectedStation : null,
       isLoading: true,
       error: ''
     }
@@ -37,7 +34,6 @@ class PlanScreen extends Component {
         const stations = res.data.network.stations
         this.setState({
           stations : stations,
-          selectedStation : stations.find( s => s.extra.uid === DEFAULT_SELECTED_STATION_ID),
           isLoading : false,
           error: ''
         })
@@ -45,8 +41,8 @@ class PlanScreen extends Component {
       .catch( err => this.setState({ error : err }))
   }
 
-
   render() {
+    const { params } = this.props.navigation.state;
     if (this.state.error) {
       return (
         <View>
@@ -63,7 +59,7 @@ class PlanScreen extends Component {
     return (
       <View style={{flex: 1}}>
         <FloatingButton navigation={this.props.navigation}/>
-        <Plan stations={this.state.stations} selectedStation={this.state.selectedStation} />
+        <Plan stations={this.state.stations} selectedStation={ params && params.selectedStation } />
       </View>
     );
   }

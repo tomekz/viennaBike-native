@@ -6,15 +6,17 @@ import commonStyles from '.././styles/styles'
 
 class StationCard extends Component {
 
-  onPressCard(e) {
-    console.log(' card pressed')
+  onPressCard() {
+    this.props.onPressCard(this.props.station)
   }
 
   render()
   {
     const { station } = this.props
     return (
-        <TouchableOpacity onPress={this.onPressCard.bind(this)} style={styles.card}>
+        <TouchableOpacity
+        onPress={this.onPressCard.bind(this)}
+        style={styles.card}>
           <View style={styles.cardTop}>
             <Avatar
               containerStyle = {styles.cardAvatar}

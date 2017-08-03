@@ -11,6 +11,10 @@ const ds = new ListView.DataSource({rowHasChanged});
 
 class StationsList extends Component {
 
+  onPressCard(station){
+    this.props.navigation.navigate('Plan', {selectedStation: station})
+  }
+
   render(){
     const { stations } = this.props
     return (
@@ -19,7 +23,7 @@ class StationsList extends Component {
         dataSource={ds.cloneWithRows(stations)}
         renderRow={(data) =>
           <View style={styles.stationCardContainer}>
-            <StationCard station={data} />
+            <StationCard station={data} onPressCard={this.onPressCard.bind(this)}/>
           </View>
         }
       />

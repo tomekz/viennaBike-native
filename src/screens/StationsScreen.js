@@ -54,7 +54,7 @@ class StationsScreen extends Component {
 
     return (
       <View style={styles.container}>
-        <StationsList stations={this.state.stations} />
+        <StationsList stations={this.state.stations} navigation={this.props.navigation} />
       </View>
     );
 

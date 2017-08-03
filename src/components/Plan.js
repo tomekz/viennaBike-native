@@ -7,6 +7,7 @@ import styles from './styles/Plan'
 
 const LATITUDE_DELTA = 0.00922*1.5
 const LONGITUDE_DELTA =  0.00421*1.5
+const DEFAULT_SELECTED_STATION_ID = '111'  // Oper in center
 
 class Plan extends Component {
   constructor(){
@@ -17,7 +18,7 @@ class Plan extends Component {
   }
 
   componentDidMount() {
-    const { selectedStation } = this.props
+    const selectedStation = this.props.selectedStation || this.props.stations.find( s=> s.extra.uid === DEFAULT_SELECTED_STATION_ID)
 
     const region = {
       latitude:       selectedStation.latitude,
@@ -29,6 +30,10 @@ class Plan extends Component {
     this.onRegionChange(region);
   }
 
+  onPressCard(station){
+    console.log('card pressed on PlanScreen ')
+  }
+
   onRegionChange(region) {
     this.setState({
       mapRegion: region
@@ -36,7 +41,7 @@ class Plan extends Component {
   }
 
   render() {
-    const { stations, selectedStation } = this.props
+    const { stations } = this.props
     return (
       <MapView
         ref={(ref) => { this.mapRef = ref }}
@@ -57,10 +62,10 @@ class Plan extends Component {
             title={station.name}
             description={station.extra.description}
             key={station.id}
-            calloutVisible = { station.extra.uid === selectedStation.uid }
+            //calloutVisible = { station.extra.uid === selectedStation.uid }
             >
              <MapView.Callout>
-                <StationCard station={station} />
+                <StationCard station={station} onPressCard={this.onPressCard.bind(this)} />
             </MapView.Callout>
           </Marker>
         ))}
