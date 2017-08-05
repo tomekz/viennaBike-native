@@ -40,7 +40,7 @@ class AboutScreen extends Component {
             onPress={() => Linking.openURL('https://github.com/tomekz/viennaBike-native')}
           />
         </List>
-        <Text style={{margin:15}}>Bike logo source: Stadt Wien - data.wien.gv.at</Text>
+        {/* <Text style={{margin:15}}>Bike logo source: Stadt Wien - data.wien.gv.at</Text> */}
         <Text style={{margin:15}}>Citybike and the GEWISTA Werbegesellschaft m.b.H. are not responsible for the content of this application
           .The author of this application is not affiliated with them in any way </Text>
       </View>

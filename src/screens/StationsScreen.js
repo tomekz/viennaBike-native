@@ -38,7 +38,6 @@ class StationsScreen extends Component {
       stations.forEach( s => {
         const distance = provider.distance(position.coords.latitude, position.coords.longitude, s.latitude, s.longitude)
         s.distance = distance.toFixed(1)
-        console.log(s.distance)
       })
 
       stations.sort((a, b) => a.distance - b.distance )

@@ -5,8 +5,8 @@ const colorWhite = '#fff'
 
 export default styles = StyleSheet.create({
   card: {
-    width: 165,
-    height: 127
+    width: 170,
+    height: 127,
   },
   cardTop: {
     flexDirection: 'row',
