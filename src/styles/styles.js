@@ -5,7 +5,6 @@ const red = '#FF0000'
 
 export default styles = StyleSheet.create({
   textBold: {
-    //fontSize: 12,
     fontWeight: 'bold',
     margin: 1
   },

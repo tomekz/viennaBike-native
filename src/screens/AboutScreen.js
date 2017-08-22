@@ -29,6 +29,7 @@ class AboutScreen extends Component {
             key={1}
             title={'Tomasz Zadrozny'}
             subtitle={'Author'}
+            onPress={() => Linking.openURL('https://github.com/tomekz')}
           />
           <ListItem
             avatar = {<Avatar

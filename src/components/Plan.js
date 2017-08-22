@@ -9,17 +9,10 @@ const LONGITUDE_DELTA =  0.00421*1.5
 const DEFAULT_SELECTED_STATION_ID = '111'  // Oper in center
 
 class Plan extends Component {
-  constructor(){
+
+  constructor(props){
     super()
-    this.state = {
-      mapRegion: null,
-      selectedStation: null,
-    }
-  }
-
-  componentDidMount() {
-    const selectedStation = this.props.selectedStation || this.props.stations.find( s=> s.extra.uid === DEFAULT_SELECTED_STATION_ID)
-
+    const selectedStation = props.selectedStation || props.stations.find( s=> s.extra.uid === DEFAULT_SELECTED_STATION_ID)
     const region = {
       latitude:       selectedStation.latitude,
       longitude:      selectedStation.longitude,
@@ -27,14 +20,10 @@ class Plan extends Component {
       longitudeDelta: LONGITUDE_DELTA
     }
 
-    this.onRegionChange(region, selectedStation);
-  }
-
-  onRegionChange(region, selectedStation) {
-    this.setState({
+    this.state = {
       mapRegion: region,
-      selectedStation: selectedStation
-    });
+      selectedStation: selectedStation,
+    }
   }
 
   onLayout(){
@@ -47,14 +36,13 @@ class Plan extends Component {
     const { stations } = this.props
     return (
       <MapView
-      onLayout={this.onLayout.bind(this)}
+        onLayout={this.onLayout.bind(this)}
         style={styles.map}
         region={this.state.mapRegion}
         provider={"google"}
         showsUserLocation={true}
         toolbarEnabled = {true}
         zoomEnabled={true}
-        onRegionChange={this.onRegionChange.bind(this)}
         >
         {stations.map(station => (
           <MapView.Marker

@@ -24,8 +24,14 @@ class PlanScreen extends Component {
     this.state = {
       stations : [],
       isLoading: true,
-      error: ''
+      error: '',
+      paddingTop: 1
     }
+  }
+
+  componentWillMount() {
+    //Hack due to defect in native map module to ensure the showsMyLocationButton is shown initially. Idea is to force a repaint
+    setTimeout(()=>this.setState({paddingTop: 0}),500);
   }
 
   componentDidMount(){
@@ -57,7 +63,7 @@ class PlanScreen extends Component {
     }
 
     return (
-      <View style={{flex: 1}}>
+      <View style={{flex: 1, paddingTop: this.state.paddingTop }}>
         <FloatingButton navigation={this.props.navigation}/>
         <Plan stations={this.state.stations} selectedStation={ params && params.selectedStation } />
       </View>

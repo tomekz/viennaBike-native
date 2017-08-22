@@ -12,6 +12,6 @@ export default DrawerNavigator({
 {
   initialRouteName: 'Stations',
   contentOptions: {
-    activeTintColor: '#FF0000',
-  },
+    activeTintColor: '#76C2AF',
+  }
 })
