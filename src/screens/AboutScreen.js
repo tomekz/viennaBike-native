@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Header } from '../components'
 import { View, ListView, Text , Linking} from 'react-native'
 import { List, ListItem , Avatar} from 'react-native-elements'
 import { Ionicons } from '@expo/vector-icons';
@@ -26,7 +27,8 @@ class AboutScreen extends Component {
   render() {
     return (
       <View>
-        <List>
+        <Header navigation={this.props.navigation} />
+        <List style={{margin: 0}}>
           <ListItem
             avatar ={
               <Avatar

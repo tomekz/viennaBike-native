@@ -26,9 +26,14 @@ class StationsScreen extends Component {
       isLoading: true,
       error: ''
     }
+    this.onRefreshPress = this.onRefreshPress.bind(this)
   }
 
-  async componentDidMount(){
+  componentDidMount(){
+   this.fetchStations()
+  }
+
+  async fetchStations(){
     try{
       const provider = new GeolocationProvider()
       const position = await provider.getPosition()
@@ -55,6 +60,11 @@ class StationsScreen extends Component {
     }
   }
 
+  onRefreshPress() {
+    this.setState({isLoading: true})
+    this.fetchStations()
+  }
+
   render() {
     if(this.state.isLoading){
       return (
@@ -75,11 +85,10 @@ class StationsScreen extends Component {
 
     return (
       <View style={styles.container}>
-        <Header/>
+        <Header navigation={this.props.navigation} showRefreshButton onRefreshPress={this.onRefreshPress} />
         <StationsList stations={this.state.stations} navigation={this.props.navigation} />
       </View>
     );
-
   }
 }
 

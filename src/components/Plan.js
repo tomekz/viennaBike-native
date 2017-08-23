@@ -26,20 +26,12 @@ class Plan extends Component {
     }
   }
 
-  onLayout(){
-    const markerRef = this.state.selectedStation && this.state.selectedStation.id
-    const marker = this.refs[markerRef]
-    marker && marker.showCallout();
-  }
-
   render() {
     const { stations } = this.props
     return (
       <MapView
-        onLayout={this.onLayout.bind(this)}
         style={styles.map}
         region={this.state.mapRegion}
-        provider={"google"}
         showsUserLocation={true}
         toolbarEnabled = {true}
         zoomEnabled={true}
@@ -50,15 +42,12 @@ class Plan extends Component {
               latitude: station.latitude,
               longitude: station.longitude,
             }}
-            title={station.name}
-            description={station.extra.description}
+            image = {require('../assets/img/citybike_logo.png')}
+            title={`${station.extra.internal_id} ${station.name}`}
+            description={`${station.free_bikes} bikes | ${station.extra.slots} slots`}
             key={station.id}
-            station = { station }
             ref={station.id}
             >
-             <MapView.Callout>
-                <StationCard station={station} />
-            </MapView.Callout>
           </MapView.Marker>
         ))}
       </MapView>

@@ -12,7 +12,6 @@ export default DrawerNavigator({
   AboutMe: { screen: AboutScreen }
 },
 {
-  initialRouteName: 'Stations',
   contentOptions: {
     activeTintColor: colorPrimaryGreen,
   }

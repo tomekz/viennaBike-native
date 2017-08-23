@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { Component } from 'react';
 import { View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { FloatingButton, Plan, LoadingScreen } from '.././components';
+import { Header, Plan, LoadingScreen } from '.././components';
 import styles from '.././styles/styles';
 import { API_URL } from '.././config/config'
 
@@ -58,8 +58,10 @@ class PlanScreen extends Component {
 
     return (
       <View style={{flex: 1}}>
-        <FloatingButton navigation={this.props.navigation}/>
-        <Plan stations={this.state.stations} selectedStation={ params && params.selectedStation } />
+        <Header navigation={this.props.navigation} />
+        <View style={{flex: 1}}>
+            <Plan stations={this.state.stations} selectedStation={ params && params.selectedStation } />
+        </View>
       </View>
     );
   }

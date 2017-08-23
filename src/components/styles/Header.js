@@ -4,8 +4,8 @@ import commonStyles from '../../styles/styles'
 
 const styles = StyleSheet.create({
   headerContainer: {
-    paddingTop: 35,
-    paddingBottom: 10,
+    paddingTop: 30,
+    paddingBottom: 5,
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: colorPrimaryGreen,
