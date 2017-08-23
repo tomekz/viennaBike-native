@@ -1,10 +1,10 @@
+import axios from 'axios'
 import React, { Component } from 'react';
 import { View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { FloatingButton, Plan, LoadingScreen } from '.././components';
 import styles from '.././styles/styles';
 import { API_URL } from '.././config/config'
-import axios from 'axios'
 
 class PlanScreen extends Component {
 
@@ -25,13 +25,7 @@ class PlanScreen extends Component {
       stations : [],
       isLoading: true,
       error: '',
-      paddingTop: 1
     }
-  }
-
-  componentWillMount() {
-    //Hack due to defect in native map module to ensure the showsMyLocationButton is shown initially. Idea is to force a repaint
-    setTimeout(()=>this.setState({paddingTop: 0}),500);
   }
 
   componentDidMount(){
@@ -63,7 +57,7 @@ class PlanScreen extends Component {
     }
 
     return (
-      <View style={{flex: 1, paddingTop: this.state.paddingTop }}>
+      <View style={{flex: 1}}>
         <FloatingButton navigation={this.props.navigation}/>
         <Plan stations={this.state.stations} selectedStation={ params && params.selectedStation } />
       </View>

@@ -7,11 +7,9 @@ export default styles = StyleSheet.create({
     borderRadius: 3,
     borderWidth: 0.4,
     borderColor: lightGrey,
-    marginTop: 10,
+    marginTop: 7,
   },
   stationsList: {
-    margin: 3,
-    marginTop: 20,
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-around',

@@ -3,7 +3,7 @@
   {
     "sdkVersion": "19.0.0",
     "name": "CityBike Vienna",
-    "icon": "./src/img/citybike_logo.png",
+    "icon": "./src/assets/img/citybike_logo.png",
     "version": "1.0.0",
     "slug": "vienna-bike-native",
     "description": "application helps you localize nearest available CityBike in Vienna",

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View , Text } from 'react-native'
 import { Ionicons } from '@expo/vector-icons';
-import { FloatingButton,  StationsList, LoadingScreen } from '.././components'
+import { FloatingButton,  StationsList, LoadingScreen, Header } from '.././components'
 import GeolocationProvider from '.././lib/GeolocationProvider'
 import { API_URL } from '.././config/config'
 import axios from 'axios'
@@ -75,6 +75,7 @@ class StationsScreen extends Component {
 
     return (
       <View style={styles.container}>
+        <Header/>
         <StationsList stations={this.state.stations} navigation={this.props.navigation} />
       </View>
     );
