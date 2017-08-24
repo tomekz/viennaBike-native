@@ -73,13 +73,16 @@ class StationsScreen extends Component {
     }
     else if(this.state.error) {
       return (
-        <View style={styles.errorContainer}>
-          <Ionicons
-            name="md-warning"
-            size={24}
-          />
-          <Text style={styles.errorMessage}>{this.state.error.message}</Text>
-        </View>
+        <View style={{flex: 1}}>
+          <Header navigation={this.props.navigation} showRefreshButton onRefreshPress={this.onRefreshPress} />
+          <View style={styles.errorContainer}>
+            <Ionicons
+              name="md-warning"
+              size={24}
+            />
+            <Text style={styles.errorMessage}>{this.state.error.message}</Text>
+          </View>
+       </View>
       );
     }
 

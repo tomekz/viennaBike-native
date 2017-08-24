@@ -24,7 +24,7 @@ class PlanScreen extends Component {
     this.state = {
       stations : [],
       isLoading: true,
-      error: '',
+      error: ''
     }
   }
 
@@ -59,9 +59,7 @@ class PlanScreen extends Component {
     return (
       <View style={{flex: 1}}>
         <Header navigation={this.props.navigation} />
-        <View style={{flex: 1}}>
-            <Plan stations={this.state.stations} selectedStation={ params && params.selectedStation } />
-        </View>
+        <Plan stations={this.state.stations} selectedStation={ params && params.selectedStation }  />
       </View>
     );
   }

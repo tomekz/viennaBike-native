@@ -23,34 +23,44 @@ class Plan extends Component {
     this.state = {
       mapRegion: region,
       selectedStation: selectedStation,
+      hackLocationButton: 1
     }
   }
 
+  componentWillMount() {
+     //Hack to ensure the showsMyLocationButton is shown initially. Idea is to force a map repaint.
+    setTimeout(()=> this.setState({
+      hackLocationButton: 0
+    }),500);
+  }
   render() {
     const { stations } = this.props
     return (
-      <MapView
-        style={styles.map}
-        region={this.state.mapRegion}
-        showsUserLocation={true}
-        toolbarEnabled = {true}
-        zoomEnabled={true}
-        >
-        {stations.map(station => (
-          <MapView.Marker
-            coordinate={{
-              latitude: station.latitude,
-              longitude: station.longitude,
-            }}
-            image = {require('../assets/img/citybike_logo.png')}
-            title={`${station.extra.internal_id} ${station.name}`}
-            description={`${station.free_bikes} bikes | ${station.extra.slots} slots`}
-            key={station.id}
-            ref={station.id}
-            >
-          </MapView.Marker>
-        ))}
-      </MapView>
+      <View style={{flex: 1, marginTop: this.state.hackLocationButton}}>
+        <MapView
+          style={styles.map}
+          region={this.state.mapRegion}
+          showsUserLocation={true}
+          showsMyLocationButton={true}
+          toolbarEnabled = {true}
+          zoomEnabled={true}
+          >
+          {stations.map(station => (
+            <MapView.Marker
+              coordinate={{
+                latitude: station.latitude,
+                longitude: station.longitude,
+              }}
+              image = {require('../assets/img/citybike_logo.png')}
+              title={`${station.extra.internal_id} ${station.name}`}
+              description={`${station.free_bikes} bikes | ${station.extra.slots} slots`}
+              key={station.id}
+              ref={station.id}
+              >
+            </MapView.Marker>
+          ))}
+        </MapView>
+      </View>
     );
   }
 }

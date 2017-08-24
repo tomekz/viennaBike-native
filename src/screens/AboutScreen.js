@@ -52,7 +52,7 @@ class AboutScreen extends Component {
             onPress={() => Linking.openURL('https://github.com/tomekz/viennaBike-native')}
           />
         </List>
-        <Text style={{margin:15, fontFamily: 'montserrat'}}>Citybike and the GEWISTA Werbegesellschaft m.b.H. are not responsible for the content of this application
+        <Text style={{margin:15, fontFamily: 'montserrat'}}>Citybike Wien and the GEWISTA Werbegesellschaft m.b.H. are not responsible for the content of this application
           .The author of this application is not affiliated with them in any way </Text>
       </View>
     );
