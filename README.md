@@ -17,7 +17,11 @@ Developed for Android and IOS with [React Native](https://facebook.github.io/rea
 
 # Demo
 
-Install Expo App on your [Android smartphone](https://play.google.com/store/apps/details?id=host.exp.exponent&referrer=www) or [iPhone](https://itunes.apple.com/app/apple-store/id982107779?ct=www&mt=8).
+[![Get it on google play](/doc/google-play-badge.png)](https://play.google.com/store/apps/details?id=com.viennaBike)
+
+...or
+
+Install Expo Client on your [Android smartphone](https://play.google.com/store/apps/details?id=host.exp.exponent&referrer=www) or [iPhone](https://itunes.apple.com/app/apple-store/id982107779?ct=www&mt=8).
 
 Scan this QR-code with Expo App.
 
