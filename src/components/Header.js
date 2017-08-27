@@ -7,7 +7,6 @@ import { colorWhite }  from '../styles/styles'
 
 class Header extends Component {
 
-
   onPressMenuButton(){
     this.props.navigation.navigate('DrawerOpen')
   }

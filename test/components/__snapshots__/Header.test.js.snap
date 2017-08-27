@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#76C2AF",
+      "flexDirection": "row",
+      "paddingBottom": 5,
+      "paddingTop": 30,
+    }
+  }
+>
+  <View
+    accessibilityComponentType={undefined}
+    accessibilityLabel={undefined}
+    accessibilityTraits={undefined}
+    accessible={true}
+    collapsable={undefined}
+    hitSlop={undefined}
+    isTVSelectable={true}
+    nativeID={undefined}
+    onLayout={undefined}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "flex": 1,
+        "marginLeft": 15,
+        "opacity": 1,
+      }
+    }
+    testID={undefined}
+    tvParallaxProperties={undefined}
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      disabled={false}
+      ellipsizeMode="tail"
+    />
+  </View>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    disabled={false}
+    ellipsizeMode="tail"
+    style={
+      Object {
+        "color": "white",
+        "flex": 5,
+        "fontFamily": "montserrat-bold",
+        "fontSize": 18,
+        "margin": 1,
+      }
+    }
+  >
+    CityBike Vienna
+  </Text>
+</View>
+`;
