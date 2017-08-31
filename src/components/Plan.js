@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
-import { MapView } from 'expo';
+import MapView from 'react-native-maps';
 import StationCard from './StationCard';
 import styles from './styles/Plan'
 

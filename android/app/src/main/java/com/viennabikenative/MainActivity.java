@@ -1,4 +1,4 @@
-package com.viennabikenative;
+package com.viennaBike;
 
 import com.facebook.react.ReactActivity;
 

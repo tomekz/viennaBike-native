@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import { Header } from '../components'
 import { View, ListView, Text , Linking} from 'react-native'
 import { List, ListItem , Avatar} from 'react-native-elements'
-import { Ionicons } from '@expo/vector-icons';
+import Icon  from 'react-native-vector-icons/Ionicons';
 
 
 class AboutScreen extends Component {
   static navigationOptions = {
     drawerLabel: 'About',
     drawerIcon: ({ tintColor }) => (
-      <Ionicons
+      <Icon
         name="md-information-circle"
         size={24}
         style={{ color: tintColor }}

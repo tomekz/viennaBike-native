@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View , Text } from 'react-native'
-import { Ionicons } from '@expo/vector-icons';
+import Icon  from 'react-native-vector-icons/Ionicons';
 import { FloatingButton,  StationsList, LoadingScreen, Header } from '.././components'
 import GeolocationProvider from '.././lib/GeolocationProvider'
 import { API_URL } from '.././config/config'
@@ -12,7 +12,7 @@ class StationsScreen extends Component {
   static navigationOptions = {
     drawerLabel: 'Stations',
     drawerIcon: ({ tintColor }) => (
-      <Ionicons
+      <Icon
         name="md-bicycle"
         size={24}
         style={{ color: tintColor }}
@@ -76,7 +76,7 @@ class StationsScreen extends Component {
         <View style={{flex: 1}}>
           <Header navigation={this.props.navigation} showRefreshButton onRefreshPress={this.onRefreshPress} />
           <View style={styles.errorContainer}>
-            <Ionicons
+            <Icon
               name="md-warning"
               size={24}
             />
