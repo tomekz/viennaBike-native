@@ -12,17 +12,6 @@ export default class GeolocationProvider {
         }
       )
     })
-
-    // return new Promise((resolve, reject) => {
-    //   const position = {
-    //     coords : {
-    //       latitude : 16.3738,
-    //       longitude : 48.2082
-    //     }
-    //   }
-    //   resolve(position)
-    // })
-
   }
 
   // credit should go to: https://stackoverflow.com/a/27943

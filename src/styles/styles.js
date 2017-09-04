@@ -8,19 +8,21 @@ export const colorWhite = 'white'
 export default styles = StyleSheet.create({
   textBold: {
     margin: 1,
-    fontFamily: 'montserrat-bold',
+    fontFamily: 'Montserrat-Bold',
+    color: 'black',
   },
   textRegular: {
-    fontFamily: 'montserrat',
+    fontFamily: 'Montserrat-Regular',
+    color: 'black',
   },
   textLightGrey: {
     fontSize: 12,
     color: lightGrey,
-    fontFamily: 'montserrat',
+    fontFamily: 'Montserrat-Regular',
   },
   textRed: {
     color: red,
-    fontFamily: 'montserrat'
+    fontFamily: 'Montserrat-Regular'
   },
   container: {
     flex: 1,
@@ -34,7 +36,6 @@ export default styles = StyleSheet.create({
   errorMessage:{
     fontSize: 16,
     margin: 20,
-    fontFamily: 'montserrat'
-
+    fontFamily: 'Montserrat-Regular'
   }
 })

@@ -1,23 +1,23 @@
-{
-  "expo": {
-    "sdkVersion": "19.0.0",
-    "name": "CityBike Vienna",
-    "icon": "./src/assets/img/citybike_logo.png",
-    "version": "1.0.0",
-    "slug": "vienna-bike-native",
-    "description": "application helps you localize nearest available CityBike in Vienna",
-    "ios": {
-      "bundleIdentifier": "com.tomekz.viennaBike-native"
-    },
-    "android": {
-      "package": "com.viennaBike",
-      "config": {
-        "googleMaps": {
-          "apiKey": "AIzaSyDcqyaCh4AkZb4aIn4yExdDD5Jx8dpcGRU"
-        }
-      }
-    }
-  },
-  "name": "viennaBikenative",
-  "displayName": "CityBike Vienna"
-}
+// {
+//   "expo": {
+//     "sdkVersion": "19.0.0",
+//     "name": "CityBike Vienna",
+//     "icon": "./src/assets/img/citybike_logo.png",
+//     "version": "1.0.0",
+//     "slug": "vienna-bike-native",
+//     "description": "application helps you localize nearest available CityBike in Vienna",
+//     "ios": {
+//       "bundleIdentifier": "com.tomekz.viennaBike-native"
+//     },
+//     "android": {
+//       "package": "com.viennaBike",
+//       "config": {
+//         "googleMaps": {
+//           "apiKey": "AIzaSyDcqyaCh4AkZb4aIn4yExdDD5Jx8dpcGRU"
+//         }
+//       }
+//     }
+//   },
+//   "name": "viennaBikenative",
+//   "displayName": "CityBike Vienna"
+// }

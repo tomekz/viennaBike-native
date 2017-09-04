@@ -54,7 +54,7 @@ exports[`renders correctly 1`] = `
       Object {
         "color": "white",
         "flex": 5,
-        "fontFamily": "montserrat-bold",
+        "fontFamily": "Montserrat-Bold",
         "fontSize": 18,
         "margin": 1,
       }

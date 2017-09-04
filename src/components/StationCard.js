@@ -22,7 +22,7 @@ class StationCard extends Component {
               containerStyle = {styles.cardAvatar}
               small
               rounded
-              source={require('../assets/img/citybike_logo.png')}
+              source={station.free_bikes == 0 ? require('../../assets/img/bikes_empty.png') : require('../../assets/img/citybike_logo.png')}
               overlayContainerStyle={{backgroundColor: commonStyles.colorWhite}}
             />
             <View style={styles.cardTopContent}>
@@ -39,7 +39,7 @@ class StationCard extends Component {
                {station.free_bikes} bikes
               </Text>
               <Text style={commonStyles.textRegular}  >
-               {station.extra.slots} slots
+               {station.extra.slots} free slots
               </Text>
                { station.distance &&
                 <Text style={commonStyles.textBold} >

@@ -1,10 +1,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.viennaBike"
-    android:versionCode="1"
-    android:versionName="1.0">
+    android:versionCode="3"
+    android:versionName="2.0.0">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <uses-sdk
         android:minSdkVersion="16"
@@ -18,7 +20,7 @@
       android:theme="@style/AppTheme">
        <meta-data
       android:name="com.google.android.geo.API_KEY"
-      android:value="AIzaSyDM3svlWZmQFii8sM1dR7gGYVww9JQCkuc"/>
+      android:value="AIzaSyCvpRz7Y0pkrpAMr9AR2RZa24ja3I5KRi8"/>
       <activity
         android:name=".MainActivity"
         android:label="@string/app_name"
