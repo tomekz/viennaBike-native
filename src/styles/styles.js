@@ -1,26 +1,30 @@
 import { StyleSheet } from 'react-native'
 
-const lightGrey = '#808080'
-const red = '#FF0000'
-export const colorPrimaryGreen = '#76C2AF'
-export const colorWhite = 'white'
+const cLightGrey = '#808080'
+const cRed = '#FF0000'
+export const cPrimaryGreen = '#76C2AF'
+export const cWhite = '#ffffff'
+export const cBlack = '#000000'
+
 
 export default styles = StyleSheet.create({
   textBold: {
     margin: 1,
-    fontFamily: 'montserrat-bold',
+    fontFamily: 'Montserrat-Bold',
+    color: 'black',
   },
   textRegular: {
-    fontFamily: 'montserrat',
+    fontFamily: 'Montserrat-Regular',
+    color: 'black',
   },
   textLightGrey: {
     fontSize: 12,
-    color: lightGrey,
-    fontFamily: 'montserrat',
+    color: cLightGrey,
+    fontFamily: 'Montserrat-Regular',
   },
   textRed: {
-    color: red,
-    fontFamily: 'montserrat'
+    color: cRed,
+    fontFamily: 'Montserrat-Regular'
   },
   container: {
     flex: 1,
@@ -34,7 +38,6 @@ export default styles = StyleSheet.create({
   errorMessage:{
     fontSize: 16,
     margin: 20,
-    fontFamily: 'montserrat'
-
+    fontFamily: 'Montserrat-Regular'
   }
 })

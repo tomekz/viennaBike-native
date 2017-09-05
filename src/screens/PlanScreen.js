@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { Component } from 'react';
 import { View } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import Icon from 'react-native-vector-icons/Ionicons';
 import { Header, Plan, LoadingScreen } from '.././components';
 import styles from '.././styles/styles';
 import { API_URL } from '.././config/config'
@@ -11,7 +11,7 @@ class PlanScreen extends Component {
   static navigationOptions = {
     drawerLabel: 'Plan',
     drawerIcon: ({ tintColor }) => (
-      <Ionicons
+      <Icon
         name="md-map"
         size={24}
         style={{ color: tintColor }}

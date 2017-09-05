@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Text, View, TouchableOpacity } from 'react-native';
 import { NavigationActions } from 'react-navigation'
-import { Ionicons } from '@expo/vector-icons';
+import Icon  from 'react-native-vector-icons/Ionicons';
 import styles  from './styles/Header'
-import { colorWhite }  from '../styles/styles'
+import { cWhite }  from '../styles/styles'
 
 class Header extends Component {
 
@@ -18,10 +18,10 @@ class Header extends Component {
           style={styles.headerIcon}
           onPress={this.onPressMenuButton.bind(this)}
         >
-          <Ionicons
+          <Icon
             name="md-menu"
             size={30}
-            color={colorWhite}
+            color={cWhite}
           />
         </TouchableOpacity>
         <Text style = {styles.headerTitle}>
@@ -33,10 +33,10 @@ class Header extends Component {
          style={styles.headerIcon}
          onPress={this.props.onRefreshPress}
         >
-          <Ionicons
+          <Icon
             name="md-refresh"
             size={30}
-            color={colorWhite}
+            color={cWhite}
           />
         </TouchableOpacity>
           : null }

@@ -3,29 +3,41 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "babel-eslint": "^7.2.3",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^15.0.1",
+    "eslint-config-prettier": "^2.3.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-prettier": "^2.2.0",
+    "eslint-plugin-react": "^7.3.0",
     "jest-expo": "~19.0.0",
-    "react-native-scripts": "1.0.0",
+    "prettier": "^1.6.1",
     "react-native-test-utils": "^1.0.6",
     "react-test-renderer": "16.0.0-alpha.12"
   },
-  "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
   "scripts": {
-    "start": "react-native-scripts start",
-    "eject": "react-native-scripts eject",
-    "android": "react-native-scripts android",
-    "ios": "react-native-scripts ios",
-    "test": "node node_modules/jest/bin/jest.js --watch"
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "android": "node node_modules/react-native/local-cli/cli.js run-android",
+    "ios": "node node_modules/react-native/local-cli/cli.js run-ios",
+    "test": "node node_modules/jest/bin/jest.js --watch",
+    "lint": "./node_modules/.bin/eslint src"
   },
   "jest": {
     "preset": "jest-expo"
   },
   "dependencies": {
-    "@expo/vector-icons": "^5.0.0",
     "axios": "^0.16.2",
-    "expo": "^19.0.0",
     "react": "16.0.0-alpha.12",
-    "react-native-elements": "^0.16.0",
     "react-native": "^0.46.1",
+    "react-native-elements": "^0.16.0",
+    "react-native-maps": "^0.16.2",
+    "react-native-vector-icons": "^4.3.0",
     "react-navigation": "^1.0.0-beta.11"
+  },
+  "rnpm": {
+      "assets": [
+        "./assets/fonts/"
+      ]
   }
 }

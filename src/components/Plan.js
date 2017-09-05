@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
-import { MapView } from 'expo';
-import StationCard from './StationCard';
+import MapView from 'react-native-maps';
+import { StationCard, DirectionsToolbar }  from '../components';
 import styles from './styles/Plan'
 
 const LATITUDE_DELTA = 0.00922*1.5
@@ -27,6 +27,17 @@ class Plan extends Component {
     }
   }
 
+  onMarkerPress(e) {
+    const destination = e.nativeEvent.coordinate
+    this.directionsToolbar.show(destination)
+  }
+
+  onPress(e) {
+    if (e.nativeEvent.action !== 'marker-press') { //user pressed anywhere else in the map,
+      this.directionsToolbar.hide()
+    }
+  }
+
   componentWillMount() {
      //Hack to ensure the showsMyLocationButton is shown initially. Idea is to force a map repaint.
     setTimeout(()=> this.setState({
@@ -41,9 +52,9 @@ class Plan extends Component {
           style={styles.map}
           region={this.state.mapRegion}
           showsUserLocation={true}
-          showsMyLocationButton={true}
-          toolbarEnabled = {true}
+          toolbarEnabled = {false}
           zoomEnabled={true}
+          onPress={this.onPress.bind(this)}
           >
           {stations.map(station => (
             <MapView.Marker
@@ -51,15 +62,19 @@ class Plan extends Component {
                 latitude: station.latitude,
                 longitude: station.longitude,
               }}
-              image = {require('../assets/img/citybike_logo.png')}
+              image = {station.free_bikes == 0 ? require('../../assets/img/bikes_empty.png') : require('../../assets/img/citybike_logo.png')}
               title={`${station.extra.internal_id} ${station.name}`}
-              description={`${station.free_bikes} bikes | ${station.extra.slots} slots`}
+              description={`${station.free_bikes} bikes | ${station.empty_slots} empty slots`}
               key={station.id}
               ref={station.id}
+              onPress={this.onMarkerPress.bind(this)}
               >
             </MapView.Marker>
           ))}
         </MapView>
+        <DirectionsToolbar
+          ref = { (ref) => this.directionsToolbar = ref }
+        />
       </View>
     );
   }

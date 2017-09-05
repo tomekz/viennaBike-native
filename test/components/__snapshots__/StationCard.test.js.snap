@@ -116,11 +116,11 @@ exports[`renders correctly 1`] = `
         ellipsizeMode="tail"
         style={
           Object {
-            "fontFamily": "montserrat",
+            "fontFamily": "Montserrat-Regular",
           }
         }
       >
-        Station 
+        Station
         1144
       </Text>
       <Text
@@ -131,7 +131,7 @@ exports[`renders correctly 1`] = `
         style={
           Object {
             "color": "#808080",
-            "fontFamily": "montserrat",
+            "fontFamily": "Montserrat-Regular",
             "fontSize": 12,
           }
         }
@@ -156,7 +156,7 @@ exports[`renders correctly 1`] = `
       style={
         Array [
           Object {
-            "fontFamily": "montserrat",
+            "fontFamily": "Montserrat-Regular",
           },
           false,
         ]
@@ -172,7 +172,7 @@ exports[`renders correctly 1`] = `
       ellipsizeMode="tail"
       style={
         Object {
-          "fontFamily": "montserrat",
+          "fontFamily": "Montserrat-Regular",
         }
       }
     >
