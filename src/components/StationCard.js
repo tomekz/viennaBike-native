@@ -39,7 +39,7 @@ class StationCard extends Component {
                {station.free_bikes} bikes
               </Text>
               <Text style={commonStyles.textRegular}  >
-               {station.extra.slots} free slots
+               {station.empty_slots} free slots
               </Text>
                { station.distance &&
                 <Text style={commonStyles.textBold} >

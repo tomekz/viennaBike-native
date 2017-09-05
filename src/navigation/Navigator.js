@@ -3,7 +3,7 @@ import { DrawerNavigator } from 'react-navigation'
 import StationsScreen from '.././screens/StationsScreen'
 import PlanScreen from '.././screens/PlanScreen'
 import AboutScreen from '.././screens/AboutScreen'
-import { colorPrimaryGreen } from '../styles/styles'
+import { cPrimaryGreen } from '../styles/styles'
 
 
 export default DrawerNavigator({
@@ -13,6 +13,6 @@ export default DrawerNavigator({
 },
 {
   contentOptions: {
-    activeTintColor: colorPrimaryGreen,
+    activeTintColor: cPrimaryGreen,
   }
 })

@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native'
-import { colorPrimaryGreen, colorWhite } from '../../styles/styles'
+import { cPrimaryGreen, cWhite } from '../../styles/styles'
 import commonStyles from '../../styles/styles'
 
 const styles = StyleSheet.create({
@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: colorPrimaryGreen,
+    backgroundColor: cPrimaryGreen,
   },
   headerIcon: {
     flex: 1,
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
   headerTitle: StyleSheet.flatten([
     commonStyles.textBold,
     {
-      color: colorWhite,
+      color: cWhite,
       flex: 5,
       fontSize: 18
     }
