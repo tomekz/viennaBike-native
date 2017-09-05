@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View , Text } from 'react-native'
+import { View , Text, PermissionsAndroid } from 'react-native'
 import Icon  from 'react-native-vector-icons/Ionicons';
 import { FloatingButton,  StationsList, LoadingScreen, Header } from '.././components'
 import GeolocationProvider from '.././lib/GeolocationProvider'
@@ -35,6 +35,9 @@ class StationsScreen extends Component {
 
   async fetchStations(){
     try{
+      const granted = await this.checkLocationPermissons()
+      if(!granted) throw new Error('Permission to access location not granted. Please enable it manually in your device settings')
+
       const provider = new GeolocationProvider()
       const position = await provider.getPosition()
       const apiResponse = await axios.get(API_URL)
@@ -58,6 +61,12 @@ class StationsScreen extends Component {
         error: err
       })
     }
+  }
+
+  checkLocationPermissons() {
+    return PermissionsAndroid.check(
+      PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION
+    )
   }
 
   onRefreshPress() {
