@@ -52,7 +52,8 @@ class StationsScreen extends Component {
 
       this.setState({
         stations: stations,
-        isLoading: false
+        isLoading: false,
+        error: ''
       })
     }
     catch(err){

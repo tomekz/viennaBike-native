@@ -7,7 +7,8 @@ export default class GeolocationProvider {
           reject(err)
         },
         {
-          timeout: 10000,
+          timeout: 8000,
+          maximumAge: 5000,
           enableHighAccuracy:true
         }
       )
