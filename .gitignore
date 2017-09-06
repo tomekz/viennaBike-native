@@ -43,3 +43,7 @@ DerivedData
 *.ipa
 *.xcuserstate
 project.xcworkspace
+
+
+# Google upload keystore
+upload_key
