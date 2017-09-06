@@ -8,7 +8,6 @@ export default class GeolocationProvider {
         },
         {
           timeout: 8000,
-          maximumAge: 5000,
           enableHighAccuracy:true
         }
       )
