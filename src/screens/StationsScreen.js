@@ -7,6 +7,7 @@ import { API_URL } from '.././config/config'
 import axios from 'axios'
 import styles from '.././styles/styles'
 
+const POSITION_UNAVAILABLE = 3
 
 class StationsScreen extends Component {
   static navigationOptions = {
@@ -45,7 +46,7 @@ class StationsScreen extends Component {
 
       stations.forEach( s => {
         const distance = provider.distance(position.coords.latitude, position.coords.longitude, s.latitude, s.longitude)
-        s.distance = distance.toFixed(1)
+        s.distance = distance.toFixed(2)
       })
 
       stations.sort((a, b) => a.distance - b.distance )
@@ -59,7 +60,7 @@ class StationsScreen extends Component {
     catch(err){
       this.setState({
         isLoading: false,
-        error: err
+        error: err.code === POSITION_UNAVAILABLE ? new Error(`Unable to get current location. Tap 'refresh' button to try again`) : err
       })
     }
   }
