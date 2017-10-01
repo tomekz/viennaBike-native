@@ -22,10 +22,11 @@ Developed for Android with [React Native](https://facebook.github.io/react-nativ
 
 # Getting started
 
-- [Install and setup Create React Native App](https://github.com/react-community/create-react-native-app)
+- Follow the guide from [React Native docs](https://facebook.github.io/react-native/releases/next/docs/getting-started.html) to setup your dev environment (Open 'Building Projects with Native Code' tab and choose Android as Target OS and your respective operating system as Development OS )
+
 
 - Clone repository: `git clone https://github.com/tomekz/viennaBike-native.git`
 
 - Navigate to the created folder: `cd viennaBike-native`
 
-- To run on either iPhone or Android check this page: https://github.com/react-community/create-react-native-app#creating-an-app
+- Type `npm run android` to run the app either on Android emulator or your connected Android device
