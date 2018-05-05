@@ -22,7 +22,9 @@ class StationCard extends Component {
               containerStyle = {styles.cardAvatar}
               small
               rounded
-              source={station.free_bikes == 0 ? require('../../assets/img/bikes_empty.png') : require('../../assets/img/citybike_logo.png')}
+              source = {station.free_bikes == 0 ? require('../../assets/img/bikes_empty.png')
+                  : ( station.empty_slots == 0 ? require('../../assets/img/bikes_full.png')
+                  : require('../../assets/img/citybike_logo.png'))}
               overlayContainerStyle={{backgroundColor: commonStyles.colorWhite}}
             />
             <View style={styles.cardTopContent}>
