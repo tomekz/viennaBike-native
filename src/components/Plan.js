@@ -72,7 +72,9 @@ class Plan extends Component {
                 latitude: station.latitude,
                 longitude: station.longitude,
               }}
-              image = { this.getStationIcon(station) }//this.getIconPath(station)) }
+              image = { this.getStationIcon(station) }
+-             title={`${station.extra.internal_id} ${station.name}`}
+-             description={`${station.free_bikes} bikes | ${station.empty_slots} empty slots`}
               key={station.id}
               ref={station.id}
               onPress={this.onMarkerPress.bind(this)}
