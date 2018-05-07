@@ -2,6 +2,7 @@ import { StyleSheet } from 'react-native'
 
 const cLightGrey = '#808080'
 const cRed = '#FF0000'
+const cGreen = '#58b34c'
 export const cPrimaryGreen = '#76C2AF'
 export const cWhite = '#ffffff'
 export const cBlack = '#000000'
@@ -24,6 +25,10 @@ export default styles = StyleSheet.create({
   },
   textRed: {
     color: cRed,
+    fontFamily: 'Montserrat-Regular'
+  },
+  textGreen: {
+    color: cGreen,
     fontFamily: 'Montserrat-Regular'
   },
   container: {
