@@ -73,8 +73,8 @@ class Plan extends Component {
                 longitude: station.longitude,
               }}
               image = { this.getStationIcon(station) }
--             title={`${station.extra.internal_id} ${station.name}`}
--             description={`${station.free_bikes} bikes | ${station.empty_slots} empty slots`}
+              title={`${station.extra.internal_id} ${station.name}`}
+              description={`${station.free_bikes} bikes | ${station.empty_slots} empty slots`}
               key={station.id}
               ref={station.id}
               onPress={this.onMarkerPress.bind(this)}
