@@ -79,6 +79,20 @@ class Plan extends Component {
               ref={station.id}
               onPress={this.onMarkerPress.bind(this)}
               >
+
+              <MapView.Callout onPress={() => this.onFavPress(station.extra.uid)}>
+                <View style={{flex: 1, flexDirection: 'row'}}>
+                    <Text style={styles.title}>
+                        {station.extra.internal_id} {station.name}}
+                    </Text>
+                    <Icon
+                        style={{marginLeft: 5}}
+                        name={ station.favIcon }
+                        size={20}
+                    />
+                </View>
+                <Text>{station.free_bikes} bikes | {station.empty_slots} empty slots</Text>
+              </MapView.Callout>
             </MapView.Marker>
           ))}
         </MapView>
