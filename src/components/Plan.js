@@ -38,6 +38,16 @@ class Plan extends Component {
     }
   }
 
+  getStationIcon(station){
+    if(station.free_bikes == 0){
+      return require('../../assets/img/bikes_empty.png');
+    }else if(station.empty_slots == 0){
+      return require('../../assets/img/bikes_full.png');
+    }else{
+      return require('../../assets/img/citybike_logo.png');
+    }
+  }
+
   componentWillMount() {
      //Hack to ensure the showsMyLocationButton is shown initially. Idea is to force a map repaint.
     setTimeout(()=> this.setState({
@@ -62,7 +72,7 @@ class Plan extends Component {
                 latitude: station.latitude,
                 longitude: station.longitude,
               }}
-              image = {station.free_bikes == 0 ? require('../../assets/img/bikes_empty.png') : require('../../assets/img/citybike_logo.png')}
+              image = { this.getStationIcon(station) }
               title={`${station.extra.internal_id} ${station.name}`}
               description={`${station.free_bikes} bikes | ${station.empty_slots} empty slots`}
               key={station.id}

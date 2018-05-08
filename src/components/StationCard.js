@@ -10,6 +10,16 @@ class StationCard extends Component {
     this.props.onPressCard(this.props.station)
   }
 
+  getStationIcon(station){
+    if(station.free_bikes == 0){
+      return require('../../assets/img/bikes_empty.png');
+    }else if(station.empty_slots == 0){
+      return require('../../assets/img/bikes_full.png');
+    }else{
+      return require('../../assets/img/citybike_logo.png');
+    }
+  }
+
   render()
   {
     const { station } = this.props
@@ -22,7 +32,7 @@ class StationCard extends Component {
               containerStyle = {styles.cardAvatar}
               small
               rounded
-              source={station.free_bikes == 0 ? require('../../assets/img/bikes_empty.png') : require('../../assets/img/citybike_logo.png')}
+              source = { this.getStationIcon(station) }
               overlayContainerStyle={{backgroundColor: commonStyles.colorWhite}}
             />
             <View style={styles.cardTopContent}>
