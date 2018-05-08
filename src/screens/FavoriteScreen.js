@@ -21,6 +21,7 @@ class FavoriteScreen extends Component {
     super()
     this.state = {
       stations : [],
+      favStations: [],
       isLoading: true,
       error: ''
     }
@@ -44,14 +45,20 @@ class FavoriteScreen extends Component {
 
           this.setState({
             stations: favStations,
+            favStations: favIds,
             isLoading : false,
             error: ''
           });
         }).catch(err => {
-          this.setState({error: err});
+          console.log(err);
+          this.setState({
+            isLoading: false,
+            error: err
+          });
         });
 
       }).catch(err => {
+        console.log(err);
         this.setState({
           isLoading: false,
           error: err
@@ -75,7 +82,7 @@ class FavoriteScreen extends Component {
     return (
       <View>
         <Header navigation={this.props.navigation} />
-        <StationsList stations={this.state.stations} navigation={this.props.navigation} />
+        <StationsList stations={this.state.stations} navigation={this.props.navigation} favStations={this.state.favStations}/>
       </View>
     );
   }
