@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { View, Text, AsyncStorage } from 'react-native';
+import { View, Text } from 'react-native';
 import MapView from 'react-native-maps';
 import { StationCard, DirectionsToolbar }  from '../components';
 import styles from './styles/Plan'
-import { FAV_KEY } from '../config/config';
 import Icon from 'react-native-vector-icons/Ionicons';
+import Storage from '../lib/Storage';
 
 const LATITUDE_DELTA = 0.00922*1.5
 const LONGITUDE_DELTA =  0.00421*1.5
@@ -42,35 +42,17 @@ class Plan extends Component {
   }
 
   onFavPress(station){
-    AsyncStorage.getItem(FAV_KEY).then(res => {
-      let value = JSON.parse(res);
-
-      // Ensures that 'value' is an array
-      if(!Array.isArray(value)){
-        value = new Array();
-      }
-
-      // Add/Remove id from Array
-      let id = station.extra.uid;
-      let index = value.indexOf(id);
-      if(index == -1){
-        value.push(id);
-      }else{
-        value.splice(index, 1);
-      }
-
-      this.setState({
-        mapRegion: {  // Prevent Map from recentering to default
-          latitude: station.latitude,
-          longitude: station.longitude,
-          latitudeDelta: LATITUDE_DELTA,
-          longitudeDelta: LONGITUDE_DELTA
-        },
-        selectedStation: station,
-        favStations: value
-      })
-
-      AsyncStorage.setItem(FAV_KEY, JSON.stringify(value));
+    Storage.toggleFavorite(station.extra.uid).then((newFav) => {
+        this.setState({
+            mapRegion: {  // Prevent Map from recentering to default
+              latitude: station.latitude,
+              longitude: station.longitude,
+              latitudeDelta: LATITUDE_DELTA,
+              longitudeDelta: LONGITUDE_DELTA
+            },
+            selectedStation: station,
+            favStations: newFav
+        });
     }).catch(err =>{
       console.log(err);
     });
@@ -94,8 +76,7 @@ class Plan extends Component {
   }
 
   componentDidMount(){
-    AsyncStorage.getItem(FAV_KEY).then(res =>{
-      let value = JSON.parse(res);
+    Storage.getFavorites().then(value => {
       this.setState({
         favStations: value
       });

@@ -1,9 +1,10 @@
 import axios from 'axios';
 import React, { Component } from 'react';
-import { View, Text, AsyncStorage } from 'react-native';
+import { View, Text } from 'react-native';
 import { StationsList, LoadingScreen, Header } from '../components';
 import Icon  from 'react-native-vector-icons/Ionicons';
-import { API_URL, FAV_KEY } from '.././config/config'
+import { API_URL } from '.././config/config'
+import Storage from '../lib/Storage';
 
 class FavoriteScreen extends Component {
   static navigationOptions = {
@@ -28,10 +29,7 @@ class FavoriteScreen extends Component {
   }
 
   componentDidMount(){
-      // Get Favorite Stations ID
-      AsyncStorage.getItem(FAV_KEY).then(res => {
-        const favIds = JSON.parse(res);
-        console.log(favIds);
+    Storage.getFavorites().then(favIds => {
 
         // Get all Stations and filter Favorites
         axios.get(API_URL).then(res =>{
@@ -50,20 +48,18 @@ class FavoriteScreen extends Component {
             error: ''
           });
         }).catch(err => {
-          console.log(err);
           this.setState({
             isLoading: false,
             error: err
           });
         });
 
-      }).catch(err => {
-        console.log(err);
-        this.setState({
+    }).catch(err => {
+      this.setState({
           isLoading: false,
           error: err
-        })
       });
+    });
   }
 
   render() {

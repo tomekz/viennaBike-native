@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { View, ListView, Text, TouchableOpacity, AsyncStorage } from 'react-native'
+import { View, ListView, Text, TouchableOpacity } from 'react-native'
 import { Avatar} from 'react-native-elements'
 import styles from './styles/StationsCard'
 import commonStyles from '.././styles/styles'
 import Icon from 'react-native-vector-icons/Ionicons';
-import { FAV_KEY } from '../config/config';
+import Storage from '../lib/Storage';
 
 class StationCard extends Component {
 
@@ -31,30 +31,12 @@ class StationCard extends Component {
   }
 
   onFavPress(){
-    AsyncStorage.getItem(FAV_KEY).then(res => {
-      let value = JSON.parse(res);
-
-      // Ensures that 'value' is an array
-      if(!Array.isArray(value)){
-        value = new Array();
-      }
-
-      // Add/Remove id from Array
-      let id = this.props.station.extra.uid;
-      let index = value.indexOf(id);
-      if(index == -1){
-        value.push(id);
-      }else{
-        value.splice(index, 1);
-      }
-
+    Storage.toggleFavorite(this.props.station.extra.uid).then(() => {
       this.setState((prevState) =>{
         return {
           isFav: !prevState.isFav
         };
       });
-
-      AsyncStorage.setItem(FAV_KEY, JSON.stringify(value));
     }).catch(err =>{
       console.log(err);
     });

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { View , Text, PermissionsAndroid, AsyncStorage } from 'react-native'
+import { View , Text, PermissionsAndroid } from 'react-native'
 import Icon  from 'react-native-vector-icons/Ionicons';
 import { FloatingButton,  StationsList, LoadingScreen, Header } from '.././components'
 import GeolocationProvider from '.././lib/GeolocationProvider'
-import { API_URL, FAV_KEY } from '.././config/config'
+import Storage from '../lib/Storage';
+import { API_URL } from '.././config/config'
 import axios from 'axios'
 import styles from '.././styles/styles'
 
@@ -52,9 +53,7 @@ class StationsScreen extends Component {
 
       stations.sort((a, b) => a.distance - b.distance )
 
-      AsyncStorage.getItem(FAV_KEY).then(res =>{
-        let value = JSON.parse(res);
-
+      Storage.getFavorites().then(value => {
         this.setState({
           stations: stations,
           favStations: value,
