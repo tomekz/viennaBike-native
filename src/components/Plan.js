@@ -121,7 +121,7 @@ class Plan extends Component {
                       size={20}
                     />
                   </View>
-                  <Text>{station.free_bikes} bikes | {station.empty_slots} empty_slots</Text>
+                  <Text>{station.free_bikes} bikes | {station.empty_slots} empty slots</Text>
                 </View>
               </MapView.Callout>
             </MapView.Marker>
