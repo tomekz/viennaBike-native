@@ -3,6 +3,8 @@ import { View, Text } from 'react-native';
 import MapView from 'react-native-maps';
 import { StationCard, DirectionsToolbar }  from '../components';
 import styles from './styles/Plan'
+import Icon from 'react-native-vector-icons/Ionicons';
+import Storage from '../lib/Storage';
 
 const LATITUDE_DELTA = 0.00922*1.5
 const LONGITUDE_DELTA =  0.00421*1.5
@@ -23,7 +25,8 @@ class Plan extends Component {
     this.state = {
       mapRegion: region,
       selectedStation: selectedStation,
-      hackLocationButton: 1
+      hackLocationButton: 1,
+      favStations: []
     }
   }
 
@@ -36,6 +39,23 @@ class Plan extends Component {
     if (e.nativeEvent.action !== 'marker-press') { //user pressed anywhere else in the map,
       this.directionsToolbar.hide()
     }
+  }
+
+  onFavPress(station){
+    Storage.toggleFavorite(station.extra.uid).then((newFav) => {
+        this.setState({
+            mapRegion: {  // Prevent Map from recentering to default
+              latitude: station.latitude,
+              longitude: station.longitude,
+              latitudeDelta: LATITUDE_DELTA,
+              longitudeDelta: LONGITUDE_DELTA
+            },
+            selectedStation: station,
+            favStations: newFav
+        });
+    }).catch(err =>{
+      console.log(err);
+    });
   }
 
   getStationIcon(station){
@@ -54,6 +74,17 @@ class Plan extends Component {
       hackLocationButton: 0
     }),500);
   }
+
+  componentDidMount(){
+    Storage.getFavorites().then(value => {
+      this.setState({
+        favStations: value
+      });
+    }).catch(err =>{
+      console.log(err);
+    })
+  }
+
   render() {
     const { stations } = this.props
     return (
@@ -73,12 +104,26 @@ class Plan extends Component {
                 longitude: station.longitude,
               }}
               image = { this.getStationIcon(station) }
-              title={`${station.extra.internal_id} ${station.name}`}
-              description={`${station.free_bikes} bikes | ${station.empty_slots} empty slots`}
               key={station.id}
               ref={station.id}
               onPress={this.onMarkerPress.bind(this)}
               >
+
+              <MapView.Callout onPress={() => this.onFavPress(station)}>
+                <View>
+                  <View style={{flex: 1, flexDirection: 'row'}}>
+                    <Text style={styles.title}>
+                      {station.extra.internal_id} {station.name}
+                    </Text>
+                    <Icon
+                      style={{marginLeft: 5}}
+                      name={ this.state.favStations.indexOf(station.extra.uid) != -1 ? "md-star" : "md-star-outline" }
+                      size={20}
+                    />
+                  </View>
+                  <Text>{station.free_bikes} bikes | {station.empty_slots} empty slots</Text>
+                </View>
+              </MapView.Callout>
             </MapView.Marker>
           ))}
         </MapView>

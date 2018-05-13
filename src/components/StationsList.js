@@ -23,7 +23,7 @@ class StationsList extends Component {
         dataSource={ds.cloneWithRows(stations)}
         renderRow={(data) =>
           <View style={styles.stationCardContainer}>
-            <StationCard station={data} onPressCard={this.onPressCard.bind(this)}/>
+            <StationCard station={data} onPressCard={this.onPressCard.bind(this)} favorite={this.props.favStations.indexOf(data.extra.uid) != -1}/>
           </View>
         }
       />

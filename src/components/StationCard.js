@@ -3,8 +3,18 @@ import { View, ListView, Text, TouchableOpacity } from 'react-native'
 import { Avatar} from 'react-native-elements'
 import styles from './styles/StationsCard'
 import commonStyles from '.././styles/styles'
+import Icon from 'react-native-vector-icons/Ionicons';
+import Storage from '../lib/Storage';
 
 class StationCard extends Component {
+
+  constructor(props){
+    super();
+
+    this.state = {
+      isFav: props.favorite
+    }
+  }
 
   onPressCard() {
     this.props.onPressCard(this.props.station)
@@ -20,6 +30,19 @@ class StationCard extends Component {
     }
   }
 
+  onFavPress(){
+    Storage.toggleFavorite(this.props.station.extra.uid).then(() => {
+      this.setState((prevState) =>{
+        return {
+          isFav: !prevState.isFav
+        };
+      });
+    }).catch(err =>{
+      console.log(err);
+    });
+  }
+
+
   render()
   {
     const { station } = this.props
@@ -28,13 +51,20 @@ class StationCard extends Component {
         onPress={this.onPressCard.bind(this)}
         style={styles.card}>
           <View style={styles.cardTop}>
-            <Avatar
-              containerStyle = {styles.cardAvatar}
-              small
-              rounded
-              source = { this.getStationIcon(station) }
-              overlayContainerStyle={{backgroundColor: commonStyles.colorWhite}}
-            />
+            <View style={styles.cardAvatar}>
+              <Avatar
+                small
+                rounded
+                source = { this.getStationIcon(station) }
+                overlayContainerStyle={{backgroundColor: commonStyles.colorWhite}}
+              />
+              <Icon
+                style={{ position: 'absolute', top: 40}}
+                name={ this.state.isFav ? "md-star" : "md-star-outline" }
+                size={20}
+                onPress={this.onFavPress.bind(this)}
+              />
+            </View>
             <View style={styles.cardTopContent}>
               <Text style={commonStyles.textRegular}>
                 Station {station.extra.internal_id}
@@ -48,7 +78,7 @@ class StationCard extends Component {
               <Text style={[commonStyles.textRegular, station.free_bikes == 0 && commonStyles.textRed]} >
                {station.free_bikes} bikes
               </Text>
-              <Text style={commonStyles.textRegular}  >
+              <Text style={[commonStyles.textRegular, station.empty_slots == 0 && commonStyles.textGreen]} >
                {station.empty_slots} free slots
               </Text>
                { station.distance &&

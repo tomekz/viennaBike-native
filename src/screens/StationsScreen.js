@@ -3,6 +3,7 @@ import { View , Text, PermissionsAndroid } from 'react-native'
 import Icon  from 'react-native-vector-icons/Ionicons';
 import { FloatingButton,  StationsList, LoadingScreen, Header } from '.././components'
 import GeolocationProvider from '.././lib/GeolocationProvider'
+import Storage from '../lib/Storage';
 import { API_URL } from '.././config/config'
 import axios from 'axios'
 import styles from '.././styles/styles'
@@ -24,6 +25,7 @@ class StationsScreen extends Component {
     super()
     this.state = {
       stations : [],
+      favStations: [],
       isLoading: true,
       error: ''
     }
@@ -51,11 +53,20 @@ class StationsScreen extends Component {
 
       stations.sort((a, b) => a.distance - b.distance )
 
-      this.setState({
-        stations: stations,
-        isLoading: false,
-        error: ''
-      })
+      Storage.getFavorites().then(value => {
+        this.setState({
+          stations: stations,
+          favStations: value,
+          isLoading: false,
+          error: ''
+        })
+      }).catch(err =>{
+        this.setState({
+          isLoading: false,
+          error: err
+        })
+      });
+
     }
     catch(err){
       this.setState({
@@ -100,7 +111,7 @@ class StationsScreen extends Component {
     return (
       <View style={styles.container}>
         <Header navigation={this.props.navigation} showRefreshButton onRefreshPress={this.onRefreshPress} />
-        <StationsList stations={this.state.stations} navigation={this.props.navigation} />
+        <StationsList stations={this.state.stations} navigation={this.props.navigation} favStations={this.state.favStations} />
       </View>
     );
   }
