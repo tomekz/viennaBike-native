@@ -55,7 +55,7 @@ class StationsScreen extends Component {
 
       Storage.getFavorites().then(value => {
         this.setState({
-          stations: stations,
+          stations,
           favStations: value,
           isLoading: false,
           error: ''

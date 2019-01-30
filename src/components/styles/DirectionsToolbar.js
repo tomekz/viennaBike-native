@@ -1,5 +1,6 @@
 import { StyleSheet ,Dimensions} from 'react-native'
 import { cBlack, cWhite  } from '../../styles/styles'
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,

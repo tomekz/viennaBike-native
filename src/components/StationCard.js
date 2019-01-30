@@ -25,18 +25,16 @@ class StationCard extends Component {
       return require('../../assets/img/bikes_empty.png');
     }else if(station.empty_slots == 0){
       return require('../../assets/img/bikes_full.png');
-    }else{
-      return require('../../assets/img/citybike_logo.png');
     }
+      return require('../../assets/img/citybike_logo.png');
+    
   }
 
   onFavPress(){
     Storage.toggleFavorite(this.props.station.extra.uid).then(() => {
-      this.setState((prevState) =>{
-        return {
+      this.setState((prevState) =>({
           isFav: !prevState.isFav
-        };
-      });
+        }));
     }).catch(err =>{
       console.log(err);
     });

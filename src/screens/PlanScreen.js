@@ -33,7 +33,7 @@ class PlanScreen extends Component {
       .then(res => {
         const stations = res.data.network.stations
         this.setState({
-          stations : stations,
+          stations,
           isLoading : false,
           error: ''
         })

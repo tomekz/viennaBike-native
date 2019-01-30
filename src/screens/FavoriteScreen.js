@@ -34,7 +34,7 @@ class FavoriteScreen extends Component {
         // Get all Stations and filter Favorites
         axios.get(API_URL).then(res =>{
           const stations = res.data.network.stations;
-          let favStations = new Array();
+          const favStations = new Array();
 
           stations.forEach(station => {
             if(favIds.indexOf(station.extra.uid) != -1)

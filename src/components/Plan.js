@@ -24,7 +24,7 @@ class Plan extends Component {
 
     this.state = {
       mapRegion: region,
-      selectedStation: selectedStation,
+      selectedStation,
       hackLocationButton: 1,
       favStations: []
     }
@@ -36,7 +36,7 @@ class Plan extends Component {
   }
 
   onPress(e) {
-    if (e.nativeEvent.action !== 'marker-press') { //user pressed anywhere else in the map,
+    if (e.nativeEvent.action !== 'marker-press') { // user pressed anywhere else in the map,
       this.directionsToolbar.hide()
     }
   }
@@ -63,13 +63,13 @@ class Plan extends Component {
       return require('../../assets/img/bikes_empty.png');
     }else if(station.empty_slots == 0){
       return require('../../assets/img/bikes_full.png');
-    }else{
-      return require('../../assets/img/citybike_logo.png');
     }
+      return require('../../assets/img/citybike_logo.png');
+    
   }
 
   componentWillMount() {
-     //Hack to ensure the showsMyLocationButton is shown initially. Idea is to force a map repaint.
+     // Hack to ensure the showsMyLocationButton is shown initially. Idea is to force a map repaint.
     setTimeout(()=> this.setState({
       hackLocationButton: 0
     }),500);
@@ -92,9 +92,9 @@ class Plan extends Component {
         <MapView
           style={styles.map}
           region={this.state.mapRegion}
-          showsUserLocation={true}
+          showsUserLocation
           toolbarEnabled = {false}
-          zoomEnabled={true}
+          zoomEnabled
           onPress={this.onPress.bind(this)}
           >
           {stations.map(station => (

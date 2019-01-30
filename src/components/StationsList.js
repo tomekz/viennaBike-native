@@ -4,7 +4,7 @@ import StationCard from './StationCard'
 import styles from './styles/StationsList'
 
 const rowHasChanged = (r1, r2) => {
-  let x = r1 !== r2
+  const x = r1 !== r2
   return x
 }
 const ds = new ListView.DataSource({rowHasChanged});

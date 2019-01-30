@@ -6,9 +6,7 @@ const Storage = {
 
     // Get all Favorite Stations
     getFavorites(){
-        return AsyncStorage.getItem(FAV_KEY).then(values => {
-            return JSON.parse(values);
-        });
+        return AsyncStorage.getItem(FAV_KEY).then(values => JSON.parse(values));
     },
 
     // Save Array as JSON to Storage
@@ -23,7 +21,7 @@ const Storage = {
                 currentValue = new Array();
             }
 
-            let index = currentValue.indexOf(id);
+            const index = currentValue.indexOf(id);
             if(index == -1){
                 currentValue.push(id);
             }else{

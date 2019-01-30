@@ -20,7 +20,7 @@ class DirectionsToolbar extends Component {
     try{
       const position = await new GeolocationProvider().getPosition()
       const source = { latitude: position.coords.latitude, longitude: position.coords.longitude}
-      this.setState({show: true, source: source, destination: destination})
+      this.setState({show: true, source, destination})
     }
     catch(err){
       this.setState({show: false})
@@ -31,8 +31,7 @@ class DirectionsToolbar extends Component {
     this.setState({show: false})
   }
 
-  getParameterString = (params) => {
-    return params
+  getParameterString = (params) => params
       .map(({ key, value }) => {
         const encodedKey = encodeURIComponent(key)
         const encodedValue = encodeURIComponent(value)
@@ -40,7 +39,6 @@ class DirectionsToolbar extends Component {
         return `${encodedKey}=${encodedValue}`
       })
       .join('&')
-  }
 
   getDirections = () => {
     const params = []
@@ -61,9 +59,9 @@ class DirectionsToolbar extends Component {
     return Linking.canOpenURL(url).then(supported => {
       if (!supported) {
         return Promise.reject(new Error(`Could not open the url: ${url}`))
-      } else {
+      } 
         return Linking.openURL(url)
-      }
+      
     })
   }
 
